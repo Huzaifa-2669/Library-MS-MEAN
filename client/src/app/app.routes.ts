@@ -8,7 +8,7 @@ import { UpdateBookComponent } from './update-book/update-book.component';
 import { AssignBookComponent } from './assign-book/assign-book.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'books', component: BookListComponent },
   { path: 'add-book', component: AddBookComponent },

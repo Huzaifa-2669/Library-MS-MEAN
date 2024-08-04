@@ -15,7 +15,7 @@ export class BookService {
   getBooks() {
     return this.http.get(`/book-list`);
   }
-  addBooking(book: any) {
+  addBooks(book: any) {
     return this.http.post(`/add-book/`, book);
   }
 

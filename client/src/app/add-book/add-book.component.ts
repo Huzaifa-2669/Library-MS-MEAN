@@ -7,25 +7,32 @@ import { Router } from '@angular/router';
   selector: 'app-add-book',
   templateUrl: './add-book.component.html',
   styleUrls: ['./add-book.component.css'],
-  providers: [BookService],
 })
 export class AddBookComponent implements OnInit {
-  bookForm: FormGroup;
+  books: any[] = [];
+  booking: Booking = {
+    title: '',
+    author: '',
+    publishedYear: 1850,
+    genre: '',
+  };
 
-  constructor(
-    private fb: FormBuilder,
-    private bookService: BookService,
-    private router: Router
-  ) {
-    this.bookForm = this.fb.group({
-      title: ['', Validators.required],
-      author: ['', Validators.required],
-      publishedYear: ['', Validators.required],
-      genre: ['', Validators.required],
-    });
+  constructor(private bookservice: BookService, private route: Router) {}
+
+  ngOnInit() {}
+
+  addBooks() {
+    this.bookservice
+      .addBooks(this.booking)
+      .subscribe((response) => console.log('done'));
   }
-
-  ngOnInit(): void {}
-
-  onSubmit(): void {}
+  goBack() {
+    this.route.navigate(['/']);
+  }
+}
+interface Booking {
+  title?: string;
+  author?: string;
+  publishedYear?: number;
+  genre?: string;
 }
