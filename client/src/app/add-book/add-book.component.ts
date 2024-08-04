@@ -1,10 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BookService } from '../services/book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-book',
-  standalone: true,
-  imports: [],
   templateUrl: './add-book.component.html',
-  styleUrl: './add-book.component.css',
+  styleUrls: ['./add-book.component.css'],
+  providers: [BookService],
 })
-export class AddBookComponent {}
+export class AddBookComponent implements OnInit {
+  bookForm: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private bookService: BookService,
+    private router: Router
+  ) {
+    this.bookForm = this.fb.group({
+      title: ['', Validators.required],
+      author: ['', Validators.required],
+      publishedYear: ['', Validators.required],
+      genre: ['', Validators.required],
+    });
+  }
+
+  ngOnInit(): void {}
+
+  onSubmit(): void {}
+}
