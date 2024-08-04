@@ -40,6 +40,8 @@ h6 {
 a {
   color: var(--text-light-color);
   text-decoration: none;
+  padding: 5px;
+  margin: 10px;
 }
 
 a:hover {

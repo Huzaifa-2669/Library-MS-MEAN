@@ -1,0 +1,59 @@
+/* Center the form within the page */
+.panel {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #cabcae;
+}
+
+/* Add spacing to the form elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.panel-heading {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.panel-body {
+  padding: 20px;
+}
+
+.btn {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success {
+  background-color: var(--secondary-color);
+  color: var(--text-light-color);
+}
+
+.btn-success:hover {
+  background-color: var(--accent-color);
+}
+
+.btn-info {
+  background-color: var(--primary-color);
+  color: var(--text-light-color);
+}
+
+.btn-info:hover {
+  background-color: var(--accent-color);
+}
+
+.alert {
+  margin-top: 20px;
+}

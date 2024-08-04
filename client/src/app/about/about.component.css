@@ -1,15 +1,17 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
 }
+
 .container {
   width: 80%;
   margin: auto;
   overflow: hidden;
 }
+
 .developer {
   background: #fff;
   margin: 20px 0;
@@ -17,6 +19,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .developer img {
   float: left;
   margin-right: 20px;
@@ -24,14 +27,17 @@ body {
   width: 150px;
   height: 150px;
 }
+
 .developer h2 {
   margin: 0;
   padding: 0;
-  color: #27ac1f;
+  color: var(--primary-color);
 }
+
 .developer p {
   margin: 10px 0;
 }
+
 .clear {
   clear: both;
 }

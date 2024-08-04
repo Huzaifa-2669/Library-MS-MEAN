@@ -9,78 +9,66 @@
       (ngSubmit)="addBooks()"
     >
       <div class="form-group">
-        <label for="title" class="col-sm-2 control-label">Book Title:</label>
-        <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control w-50"
-            formControlName="title"
-            (blur)="validateField('title')"
-          />
-          <div *ngIf="validateField('title')" class="text-danger">
-            Title is required.
-          </div>
+        <label for="title" class="control-label">Book Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="title"
+          (blur)="validateField('title')"
+        />
+        <div *ngIf="validateField('title')" class="text-danger">
+          Title is required.
         </div>
       </div>
       <div class="form-group">
-        <label for="author" class="col-sm-2 control-label">Book Author:</label>
-        <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control w-50"
-            formControlName="author"
-            (blur)="validateField('author')"
-          />
-          <div *ngIf="validateField('author')" class="text-danger">
-            Author is required.
-          </div>
+        <label for="author" class="control-label">Book Author:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="author"
+          (blur)="validateField('author')"
+        />
+        <div *ngIf="validateField('author')" class="text-danger">
+          Author is required.
         </div>
       </div>
       <div class="form-group">
-        <label for="publishedYear" class="col-sm-2 control-label"
-          >Published Year:</label
+        <label for="publishedYear" class="control-label">Published Year:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="publishedYear"
+          (blur)="validateField('publishedYear')"
+        />
+        <div *ngIf="validateField('publishedYear')" class="text-danger">
+          Valid Year is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="genre" class="control-label">Book Genre:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="genre"
+          (blur)="validateField('genre')"
+        />
+        <div *ngIf="validateField('genre')" class="text-danger">
+          Genre is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="addBookForm.invalid"
         >
-        <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control w-50"
-            formControlName="publishedYear"
-            (blur)="validateField('publishedYear')"
-          />
-          <div *ngIf="validateField('publishedYear')" class="text-danger">
-            Valid Year is required.
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="genre" class="col-sm-2 control-label">Book Genre:</label>
-        <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control w-50"
-            formControlName="genre"
-            (blur)="validateField('genre')"
-          />
-          <div *ngIf="validateField('genre')" class="text-danger">
-            Genre is required.
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-8">
-          <button
-            type="submit"
-            class="btn btn-success mr-2"
-            [disabled]="addBookForm.invalid"
-          >
-            Save
-          </button>
-          <a class="btn btn-info" (click)="goBack()">Cancel</a>
-        </div>
+          Save
+        </button>
+        <a class="btn btn-info" (click)="goBack()">Cancel</a>
       </div>
     </form>
 
-    <div *ngIf="successMessage" class="alert alert-success mt-3">
+    <div *ngIf="successMessage" class="alert alert-success">
       {{ successMessage }}
       <div>
         <strong>Book Details:</strong>
