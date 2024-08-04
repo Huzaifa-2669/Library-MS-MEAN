@@ -1,1 +1,176 @@
 /* You can add global styles to this file, and also import other style files */
+/* styles.css */
+
+/* Define root variables for colors */
+:root {
+  --primary-color: #5e503f;
+  --secondary-color: #b7c828;
+  --background-color: #eae0d5;
+  --accent-color: #22333b;
+  --text-color: #333;
+  --text-light-color: #fff;
+}
+
+/* Global styles */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary-color);
+}
+
+a {
+  color: var(--text-light-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
+  color: var(--text-light-color);
+  padding: 10px 20px;
+  margin-bottom: 20px; /* Add spacing between the navbar and the content */
+}
+
+.navbar-nav {
+  display: flex; /* Align items side by side */
+  margin: 0 auto;
+  list-style-type: none; /* Remove bullet points */
+  padding-left: 0; /* Remove default padding */
+}
+
+.nav-item {
+  margin-right: 20px; /* Add spacing between nav items */
+}
+
+.nav-item:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+.nav-link {
+  color: var(--text-light-color) !important;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color) !important;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success {
+  background-color: var(--secondary-color);
+  color: var(--text-light-color);
+}
+
+.btn-success:hover {
+  background-color: var(--accent-color);
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: var(--text-light-color);
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.btn-info {
+  background-color: var(--primary-color);
+  color: var(--text-light-color);
+}
+
+.btn-info:hover {
+  background-color: var(--accent-color);
+}
+
+/* Forms */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+}
+
+.form-group label {
+  color: var(--primary-color);
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid var(--primary-color);
+  text-align: left;
+}
+
+.table th {
+  background-color: var(--primary-color);
+  color: var(--text-light-color);
+}
+
+.table tr:nth-child(even) {
+  background-color: var(--background-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .navbar {
+    padding: 10px;
+  }
+
+  .navbar-brand,
+  .nav-link {
+    font-size: 14px;
+  }
+
+  .form-control {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+  }
+}

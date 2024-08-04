@@ -8,10 +8,11 @@ import { UpdateBookComponent } from './update-book/update-book.component';
 import { AssignBookComponent } from './assign-book/assign-book.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'books', component: BookListComponent },
   { path: 'add-book', component: AddBookComponent },
   { path: 'update-book/:id', component: UpdateBookComponent },
-  { path: 'borrow-book/', component: AssignBookComponent },
+  { path: 'assign-book', component: AssignBookComponent },
 ];

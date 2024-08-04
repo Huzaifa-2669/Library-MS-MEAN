@@ -1,1 +1,40 @@
-<h2>Book List</h2>
+<div class="container mt-4">
+  <h1>Book List</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Published Year</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Availability</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of booking">
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.publishedYear }}</td>
+        <td>{{ book.genre }}</td>
+        <td>{{ book.available }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="toLink(book._id)"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="deleteBook(book._id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

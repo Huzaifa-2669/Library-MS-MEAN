@@ -1,66 +1,77 @@
 <div class="panel panel-default mt-3 ml-5">
   <div class="panel-heading">
-    Books Entry Form : You can add an Books detail information into this LMS
-    Apps.
+    Books Entry Form: You can add book detail information into this LMS app.
   </div>
   <div class="panel-body">
-    <form class="form-horizontal" #addbookForm="ngForm">
+    <form
+      class="form-horizontal"
+      [formGroup]="addBookForm"
+      (ngSubmit)="addBooks()"
+    >
       <div class="form-group">
-        <label for="title" class="col-sm-2 control-label">Book Title : </label>
+        <label for="title" class="col-sm-2 control-label">Book Title:</label>
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control w-50"
-            [(ngModel)]="booking.title"
-            name="title"
+            formControlName="title"
+            (blur)="validateField('title')"
           />
+          <div *ngIf="validateField('title')" class="text-danger">
+            Title is required.
+          </div>
         </div>
       </div>
       <div class="form-group">
-        <label for="author" class="col-sm-2 control-label"
-          >Book Author :
-        </label>
+        <label for="author" class="col-sm-2 control-label">Book Author:</label>
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control w-50"
-            [(ngModel)]="booking.author"
-            name="author"
+            formControlName="author"
+            (blur)="validateField('author')"
           />
+          <div *ngIf="validateField('author')" class="text-danger">
+            Author is required.
+          </div>
         </div>
       </div>
       <div class="form-group">
         <label for="publishedYear" class="col-sm-2 control-label"
-          >Published Year :
-        </label>
-        <div class="col-sm-9">
-          <input
-            type="number"
-            class="form-control w-50"
-            [(ngModel)]="booking.publishedYear"
-            name="publishedYear"
-          />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="genre" class="col-sm-2 control-label">Book Genre : </label>
+          >Published Year:</label
+        >
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control w-50"
-            [(ngModel)]="booking.genre"
-            name="genre"
+            formControlName="publishedYear"
+            (blur)="validateField('publishedYear')"
           />
+          <div *ngIf="validateField('publishedYear')" class="text-danger">
+            Valid Year is required.
+          </div>
         </div>
       </div>
-
+      <div class="form-group">
+        <label for="genre" class="col-sm-2 control-label">Book Genre:</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control w-50"
+            formControlName="genre"
+            (blur)="validateField('genre')"
+          />
+          <div *ngIf="validateField('genre')" class="text-danger">
+            Genre is required.
+          </div>
+        </div>
+      </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-8">
           <button
             type="submit"
             class="btn btn-success mr-2"
-            (click)="addBooks()"
+            [disabled]="addBookForm.invalid"
           >
             Save
           </button>
@@ -68,5 +79,16 @@
         </div>
       </div>
     </form>
+
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+      <div>
+        <strong>Book Details:</strong>
+        <p>Title: {{ addedBook?.title }}</p>
+        <p>Author: {{ addedBook?.author }}</p>
+        <p>Published Year: {{ addedBook?.publishedYear }}</p>
+        <p>Genre: {{ addedBook?.genre }}</p>
+      </div>
+    </div>
   </div>
 </div>

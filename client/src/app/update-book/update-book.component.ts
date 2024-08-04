@@ -1,22 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BookService } from '../services/book.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-update-book',
   templateUrl: './update-book.component.html',
   styleUrls: ['./update-book.component.css'],
+  imports: [FormsModule],
+  standalone: true,
 })
 export class UpdateBookComponent implements OnInit {
-  book: any = {};
+  bookings: any[] = [];
+  booking: Booking = {
+    title: '',
+    author: '',
+    publishedYear: 0,
+    genre: '',
+    available: false,
+  };
+  id: number;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private bookService: BookService
-  ) {}
+    private bookService: BookService,
+    public route: ActivatedRoute,
+    public router: Router
+  ) {
+    this.id = this.route.snapshot.params['id'];
+  }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.getBook();
+  }
+  getBook() {
+    this.bookService.getBook(this.id).subscribe((responses) => {
+      this.booking = responses;
+      console.log('Data Successfully Fetched!');
+    });
+  }
 
-  onSubmit(): void {}
+  updateBooks() {
+    this.bookService
+      .updateBooks(this.id, this.booking)
+      .subscribe((response: Object) => {
+        this.bookings = response as any[];
+        this.router.navigate(['/books']);
+      });
+  }
+}
+
+interface Booking {
+  title?: string;
+  author?: string;
+  publishedYear?: number;
+  genre?: string;
+  available?: boolean;
 }

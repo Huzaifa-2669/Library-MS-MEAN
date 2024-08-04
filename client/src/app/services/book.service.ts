@@ -9,27 +9,29 @@ export class BookService {
   constructor(private http: HttpClient, public router: Router) {}
 
   getBook(id: number) {
-    return this.http.get(`/book-list` + '/' + id);
+    return this.http.get('http://localhost:5000/' + id);
   }
 
   getBooks() {
-    return this.http.get(`/book-list`);
+    return this.http.get('http://localhost:5000/');
   }
   addBooks(book: any) {
-    return this.http.post(`/add-book/`, book);
+    return this.http.post('http://localhost:5000/addbook/', book);
   }
 
   assignBook(book: any) {
-    return this.http.post(`/assign-book/`, book);
+    return this.http.post('http://localhost:5000/availability', book);
+  }
+
+  changeAvailability(book: any) {
+    return this.http.put('http://localhost:5000/availability', book);
   }
 
   deleteBooks(id: number) {
     console.log(id);
-    return this.http.delete(`/book-list` + '/' + id);
+    return this.http.delete('http://localhost:5000/' + id);
   }
   updateBooks(id: number, info: any) {
-    this.router.navigate(['/book-list']);
-
-    return this.http.put(`book-list` + '/' + id, info);
+    return this.http.put('http://localhost:5000/' + id, info);
   }
 }
