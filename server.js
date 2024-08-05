@@ -12,6 +12,7 @@ const mongooseDatabaseURL =
 //MiddleWare
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "client/dist/client")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(Books);
 
@@ -20,11 +21,14 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+app.listen(process.env.PORT || 8080);
 
 //Basic routes
 app.get("/", (req, res) => {
   res.send("Welcome to the Library Management System");
+});
+
+// Send all requests to index.html
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "client/dist/client/index.html"));
 });
